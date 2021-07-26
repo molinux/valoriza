@@ -1,6 +1,6 @@
-import { getCustomRepository } from "typeorm"
-import { ComplimentsRepositories } from "../repositories/ComplimentsRepositories"
-import { UsersRepositories } from "../repositories/UsersRepository";
+import { getCustomRepository } from 'typeorm';
+import { ComplimentsRepositories } from '../repositories/ComplimentsRepositories';
+import { UsersRepositories } from '../repositories/UsersRepository';
 
 interface IComplimentRequest {
   tag_id: string;
@@ -10,33 +10,33 @@ interface IComplimentRequest {
 }
 
 class CreateComplimentService {
-  async execute({ tag_id, user_sender, user_receiver, message } : IComplimentRequest) {
-    const complimentsRepositories = getCustomRepository(ComplimentsRepositories);
-    const usersRepository = getCustomRepository(UsersRepositories);
+	async execute({ tag_id, user_sender, user_receiver, message } : IComplimentRequest) {
+		const complimentsRepositories = getCustomRepository(ComplimentsRepositories);
+		const usersRepository = getCustomRepository(UsersRepositories);
 
-    // Vai pegar o id do usuário (user receiver)
-    const userReceiverExists = await usersRepository.findOne(user_receiver);
+		// Vai pegar o id do usuário (user receiver)
+		const userReceiverExists = await usersRepository.findOne(user_receiver);
 
-    // O usuário não pode fazer elogios para ele mesmo
-    if(user_sender === user_receiver) {
-      throw new Error("Incorrect User Receiver");
-    }
+		// O usuário não pode fazer elogios para ele mesmo
+		if(user_sender === user_receiver) {
+			throw new Error('Incorrect User Receiver');
+		}
 
-    if(!userReceiverExists) {
-      throw new Error("User Receiver does not exists!");
-    }
+		if(!userReceiverExists) {
+			throw new Error('User Receiver does not exists!');
+		}
 
-    const compliment = complimentsRepositories.create({
-      tag_id,
-      user_receiver,
-      user_sender,
-      message
-    });
+		const compliment = complimentsRepositories.create({
+			tag_id,
+			user_receiver,
+			user_sender,
+			message
+		});
 
-    await complimentsRepositories.save(compliment);
+		await complimentsRepositories.save(compliment);
 
-    return compliment;
-  }
+		return compliment;
+	}
 }
 
-export { CreateComplimentService }
+export { CreateComplimentService };

@@ -3,31 +3,31 @@ import { TagsRepositories } from '../repositories/TagsRepository';
 
 
 class CreateTagService {
-  async execute(name: string) {
-    const tagsRepositories = getCustomRepository(TagsRepositories)
+	async execute(name: string) {
+		const tagsRepositories = getCustomRepository(TagsRepositories);
 
-    // Se não passar uma tag (Verificar)
-    if(!name) {
-      throw new Error("Incorrect name!");
-    }
+		// Se não passar uma tag (Verificar)
+		if(!name) {
+			throw new Error('Incorrect name!');
+		}
     
-    // Verificar se já existe a tag
-    const tagAlreadyExists = await tagsRepositories.findOne({
-      name
-    });
+		// Verificar se já existe a tag
+		const tagAlreadyExists = await tagsRepositories.findOne({
+			name
+		});
 
-    if(tagAlreadyExists) {
-      throw new Error("Tag already exists!");
-    }
+		if(tagAlreadyExists) {
+			throw new Error('Tag already exists!');
+		}
 
-    const tag = tagsRepositories.create({
-      name
-    });
+		const tag = tagsRepositories.create({
+			name
+		});
 
-    await tagsRepositories.save(tag);
+		await tagsRepositories.save(tag);
 
-    return tag;
-  }
+		return tag;
+	}
 }
 
 export { CreateTagService };

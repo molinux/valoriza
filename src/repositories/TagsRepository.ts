@@ -6,4 +6,4 @@ class TagsRepositories extends Repository<Tag> {
 
 }
 
-export { TagsRepositories }
+export { TagsRepositories };

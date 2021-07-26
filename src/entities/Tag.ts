@@ -2,7 +2,7 @@ import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } fro
 
 import { v4 as uuid } from 'uuid';
 
-@Entity("tags")
+@Entity('tags')
 class Tag {
 
   @PrimaryColumn()
@@ -18,9 +18,9 @@ class Tag {
   updated_at: Date;
 
   constructor() {
-    if(!this.id) {
-      this.id = uuid();
-    }
+  	if(!this.id) {
+  		this.id = uuid();
+  	}
   }
 }
 

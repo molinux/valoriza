@@ -1,9 +1,9 @@
-import {Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn} from "typeorm";
+import {Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn} from 'typeorm';
 
 import { v4 as uuid } from 'uuid';
 
 // Entity = referencia a tabela users
-@Entity("users")
+@Entity('users')
 class User {
 
   @PrimaryColumn()
@@ -28,10 +28,10 @@ class User {
   updated_at: Date;
 
   constructor() {
-    // Se o id estiver vazio (novo usuário), irá criar o mesmo
-    if(!this.id) {
-      this.id = uuid();
-    }
+  	// Se o id estiver vazio (novo usuário), irá criar o mesmo
+  	if(!this.id) {
+  		this.id = uuid();
+  	}
   }
 }
 
