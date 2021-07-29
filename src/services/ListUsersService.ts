@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import { getCustomRepository } from 'typeorm';
 import { UsersRepositories } from '../repositories/UsersRepository';
 import { classToPlain } from 'class-transformer';
