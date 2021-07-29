@@ -1,5 +1,6 @@
+/* eslint-disable linebreak-style */
 import {Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn} from 'typeorm';
-
+import { Exclude } from 'class-transformer';
 import { v4 as uuid } from 'uuid';
 
 // Entity = referencia a tabela users
@@ -18,6 +19,7 @@ class User {
   @Column()
   admin: boolean;
 
+  @Exclude()
   @Column()
   password: string;
 
