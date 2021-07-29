@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import { Router } from 'express';
 import { CreateUserController } from './controllers/CreateUserController';
 import { CreateTagController  } from './controllers/CreateTagController';
